@@ -5,7 +5,7 @@ import 'iconcontent.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xff1D1B30);
-const inactiveCardColor = Color(0xff111336);
+const inactiveCardColor = Color(0xff121325);
 const bottomContainerColor = Color(0xffEB1555);
 
 enum Gender {
@@ -22,36 +22,7 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
 
-
-
-
-  void updateColor(Gender gender) {
-    if (gender == Gender.male) {
-      if (maleCardColor == inactiveCardColor) {
-        setState(() {
-          maleCardColor = activeCardColor;
-          femaleCardColor = inactiveCardColor;
-        });
-      } else {
-        setState(() {
-          maleCardColor = inactiveCardColor;
-          femaleCardColor = activeCardColor;
-        });
-      }
-    } else {
-      if (femaleCardColor == inactiveCardColor) {
-        setState(() {
-          femaleCardColor = activeCardColor;
-          maleCardColor = inactiveCardColor;
-        });
-      } else {
-        setState(() {
-          femaleCardColor = inactiveCardColor;
-          maleCardColor = activeCardColor;
-        });
-      }
-    }
-  }
+  Gender? selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +38,12 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-
-                      updateColor(Gender.male);
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
                     },
                     child: ReusableCard(
-                      colour: maleCardColor,
+                      colour: selectedGender == Gender.male ?  activeCardColor : inactiveCardColor,
                       cardChild: genderCard(
                         genderIcon: FontAwesomeIcons.mars,
                         genderText: 'MALE',
@@ -82,10 +54,12 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      updateColor(Gender.female);
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
                     },
                     child: ReusableCard(
-                      colour: femaleCardColor,
+                      colour: selectedGender == Gender.female ?  activeCardColor : inactiveCardColor,
                       cardChild: genderCard(
                         genderIcon: FontAwesomeIcons.venus,
                         genderText: 'FEMALE',
