@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-const labelTextStyle = TextStyle(fontSize: 25);
+import 'constants.dart';
 
 class genderCard extends StatelessWidget {
   final String genderText;
@@ -20,7 +19,7 @@ class genderCard extends StatelessWidget {
         SizedBox(height: 8.0,),
         Text(
           '$genderText',
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         ),
         SizedBox(height: 8.0,),
       ],
