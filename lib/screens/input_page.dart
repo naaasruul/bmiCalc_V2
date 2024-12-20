@@ -1,3 +1,4 @@
+import 'package:bmicalcv2/calculator_brain.dart';
 import 'package:bmicalcv2/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,6 +7,7 @@ import '../components//iconcontent.dart';
 import '../constants.dart';
 import '../components/BottomButton.dart';
 import 'package:bmicalcv2/components/RoundIcon.dart';
+import 'package:bmicalcv2/calculator_brain.dart';
 
 enum Gender {
   male,
@@ -194,11 +196,13 @@ class _InputPageState extends State<InputPage> {
                             RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
-                                 setState(() {
-                                   age--;
-                                 });
+                                  setState(() {
+                                    age--;
+                                  });
                                 }),
-                            SizedBox(width: 8.0,),
+                            SizedBox(
+                              width: 8.0,
+                            ),
                             RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
@@ -215,14 +219,20 @@ class _InputPageState extends State<InputPage> {
               ],
             )),
             BottomButton(
-              onTap:   (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultsPage()));
+              onTap: () {
+                CalculatorBrain calc = CalculatorBrain(height: height, weight: weight);
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ResultsPage(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation()
+                    )
+                    ));
               },
-              buttonTitle:'Calculate',
+              buttonTitle: 'Calculate',
             )
           ],
         ));
   }
 }
-
-

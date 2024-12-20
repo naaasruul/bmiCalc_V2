@@ -6,7 +6,16 @@ import 'package:bmicalcv2/components/RoundIcon.dart';
 import 'package:bmicalcv2/constants.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+
+  ResultsPage({
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +46,15 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'OVERWEIGHT',
+                      '$resultText',
                       style: kResultTextStyle,
                     ),
                     Text(
-                      '25.09',
+                      '$bmiResult',
                       style: kBMITextStyle,
                     ),
                     Text(
-                      'lorem ipsum dasdas dasd as asdasd asd  asdsadsa',
+                      '$interpretation',
                       style: kBodyTextStyle,
                       textAlign: TextAlign.center,
                     )

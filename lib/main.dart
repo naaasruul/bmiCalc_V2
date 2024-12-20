@@ -11,7 +11,7 @@ class BMICalculator extends StatelessWidget {
       theme: ThemeData.dark().copyWith(),
       home: InputPage(),
       routes: {
-        '/result':(context)=>ResultsPage(),
+        '/home':(context)=>InputPage(),
       },
     );
   }
