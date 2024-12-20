@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:bmicalcv2/constants.dart';
 
 class genderCard extends StatelessWidget {
   final String genderText;
